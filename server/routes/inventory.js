@@ -53,7 +53,35 @@ router.get('/', async (req, res) => {
 
 // get a specific item
 router.get('/:id', async (req, res) => {
+    try{
+        const item = await Inventory.findById(req.params.id);
+        res.status(200).send(item);
+    }catch(error){
+        res.status(404).send(error.message);
+    }
     
+})
+
+// delete a specific item
+router.delete('/:id', async (req, res) => {
+    try{
+        const deleteInv = await Inventory.findByIdAndRemove(req.params.id);
+        res.status(204).send();
+    }catch(error){
+        res.status(400).send(error.message);
+    }
+});
+
+// update a specific item
+
+router.patch('/:id', async (req, res) => {
+    try{
+        const updateInv = await Inventory.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.status(200).send(updateInv);
+    }catch(error){
+        res.status(400).send(error.message);
+
+    }
 })
 
 module.exports = router;
