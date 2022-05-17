@@ -13,7 +13,7 @@ const inventorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  upd: {
+  upc: {
     type: Number,
     required: true,
   },

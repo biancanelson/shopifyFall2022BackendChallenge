@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     sku: req.body.sku,
-    upd: req.body.upd,
+    upc: req.body.upc,
   });
 
   try {
